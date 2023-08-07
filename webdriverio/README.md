@@ -1,15 +1,15 @@
 # example-percy-automate-selenium-javascript
-Example repo used by the Percy on Automate demonstrating Percy on Automate integration with javascript using selenium-webdriver.
+Example repo used by the Percy on Automate demonstrating Percy on Automate integration with javascript using webdriverio.
 
-## Javascript Percy on Automate Selenium Tutorial
+## Javascript Percy on Automate Webdriverio Tutorial
 
 The tutorial assumes you're already familiar with Javascript and
-[Selenium](https://www.selenium.dev/) and focuses on using it with Percy. You'll still
-be able to follow along if you're not familiar with Javascript, Selenium, but we won't
-spend time introducing Javascript, Selenium concepts.
-This particular example uses Jest framework to write tests, we assume that you have basic understanding for the same.
+[Webdriverio](https://webdriver.io/) and focuses on using it with Percy. You'll still
+be able to follow along if you're not familiar with Javascript, Webdriverio, but we won't
+spend time introducing Javascript, Webdriverio concepts.
+This particular example uses Mocha framework to write tests, we assume that you have basic understanding for the same.
 
-The tutorial also assumes you have [Node 14+ with
+The tutorial also assumes you have [Node 14.20+ with
 npm](https://nodejs.org/en/download/) and
 [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed.
 
@@ -17,17 +17,17 @@ npm](https://nodejs.org/en/download/) and
 
 Clone the example application and install dependencies:
 
-Minimum required `@percy/cli` and `@percy/webdriver-utils` version is `1.27.0-beta.0` for this to work correctly. If you already have `@percy/cli` or `@percy/webdriver-utils` installed please
+Minimum required `@percy/cli` version is `1.27.0-beta.0` for this to work correctly. If you already have `@percy/cli` or `@percy/webdriver-utils` installed please
 update it to latest or minium required version.
 
 ```bash
 $ git clone https://github.com/percy/example-percy-automate-selenium-javascript.git
 $ cd example-percy-automate-selenium-javascript
-$ cd selenium-webdriver
+$ cd webdriverio
 $ npm install
 ```
 
-This tutorial specifically uses Browserstack Automate to run selenium test.
+This tutorial specifically uses Browserstack Automate to run webdriverio selenium test.
 
 For automate you will need credentials so refer to following instructions to get the same
 
@@ -91,7 +91,7 @@ Alternatively you can also update `USER_NAME`, `ACCESS_KEY` with Browserstack Us
 Considering all the above steps are done, we will run our tests, which will create automate session as well as percy build.
 
 ``` shell
-$ npx percy exec -- npm run test
+$ npx percy exec -- npm run base
 ```
 
 Your **First Percy on Automate** build is created.
@@ -108,7 +108,7 @@ await driver.findElement(By.xpath('//*[@id="1"]/div[4]')).click(); // Say change
 Or else just run `after_test.js`, we have already made visual changes in this script. If you run the `after_test.js` script, this would create few visual changes and would get compared to the last build and we would be able to see few diffs.
 
 ``` shell
-$ npx percy exec -- npm run after_test
+$ npx percy exec -- npm run head
 ```
 
 On completion of this script, this build would get compared to the previous build and hence we can see the visual changes which percy detected.
