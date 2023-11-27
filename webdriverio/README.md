@@ -17,7 +17,7 @@ npm](https://nodejs.org/en/download/) and
 
 Clone the example application and install dependencies:
 
-Minimum required `@percy/cli` version is `1.27.0-beta.0` for this to work correctly. If you already have `@percy/cli` or `@percy/webdriver-utils` installed please
+Minimum required `@percy/cli` version is `1.27.4` for this to work correctly. If you already have `@percy/cli` or `@percy/webdriver-utils` installed please
 update it to latest or minium required version.
 
 ```bash
