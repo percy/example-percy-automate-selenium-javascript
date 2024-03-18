@@ -43,8 +43,10 @@ describe("PercyOnAutomate demo test", () => {
       // navigate to required website
       await driver.get("https://percy.io/");
       await sleep(5000); 
-
+      // single page
       await percyScreenshot(driver, 'screenshot_1')
+      // full page
+      await percyScreenshot(driver, 'screenshot_2', {full_page: true})
     }
   );
 });
