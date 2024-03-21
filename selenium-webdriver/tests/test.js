@@ -16,7 +16,7 @@ describe("PercyOnAutomate demo test", () => {
       "userName" : process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
       "accessKey" : process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACCESS_KEY',
     },
-    "browserName" : "Chrome",
+    "browserName" : "Safari",
   }
 
   beforeAll(async () => {
