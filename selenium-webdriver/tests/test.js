@@ -5,12 +5,12 @@ describe("PercyOnAutomate demo test", () => {
   let driver;
   let capabilities = {
     'bstack:options' : {
-      "os" : "Windows",
-      "osVersion" : "11",
+      "os" : "OS X",
+      "osVersion" : "Sonoma",
       "browserVersion" : "latest",
-      "projectName" : "My Project",
-      "buildName" : "test percy_screenshot",
-      "sessionName" : "BStack first_test",
+      "projectName" : "Percy",
+      "buildName" : "Selenium-SDKs",
+      "sessionName" : "Son-JS",
       "local" : "false",
       "seleniumVersion" : "3.14.0",
       "userName" : process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
