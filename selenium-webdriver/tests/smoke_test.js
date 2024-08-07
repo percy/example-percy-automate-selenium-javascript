@@ -23,7 +23,7 @@ describe("PercyOnAutomate demo test", () => {
 
   beforeAll(async () => {
     driver = new Builder()
-      .usingServer(`https://hub-cloud.browserstack.com/wd/hub`)
+      .usingServer(process.env.HUB_URL)
       .withCapabilities(capabilities)
       .build();
 
