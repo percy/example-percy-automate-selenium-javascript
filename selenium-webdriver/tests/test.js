@@ -43,7 +43,7 @@ describe("PercyOnAutomate demo test", () => {
       await driver.wait(until.titleMatches(/StackDemo/i), 10000);
 
       // click on the apple products
-      await driver.findElement(By.xpath('//*[@id="__next"]/div/div/main/div[1]/div[1]/label/span')).click();
+      await driver.findElement(By.xpath('//span[normalize-space()="Apple"]')).click();
 
       // [percy note: important step]
       // Percy Screenshot 1
@@ -52,12 +52,12 @@ describe("PercyOnAutomate demo test", () => {
 
 
       // locating product on webpage and getting name of the product
-      await driver.wait(until.elementLocated(By.xpath('//*[@id="1"]/p')));
+      await driver.wait(until.elementLocated(By.xpath('(//p[@class="shelf-item__title"])[3]')));
       let productText = await driver
-        .findElement(By.xpath('//*[@id="1"]/p'))
+        .findElement(By.xpath('(//p[@class="shelf-item__title"])[3]'))
         .getText();
       // clicking the 'Add to cart' button
-      await driver.findElement(By.xpath('//*[@id="3"]/div[4]')).click();
+      await driver.findElement(By.xpath('(//div[@class="shelf-item__buy-btn"])[3]')).click();
       // waiting until the Cart pane has been displayed on the webpage
       await driver.wait(until.elementLocated(By.className("float-cart__content")));
       await driver.findElement(By.className("float-cart__content"));
@@ -65,7 +65,7 @@ describe("PercyOnAutomate demo test", () => {
       let productCartText = await driver
         .findElement(
           By.xpath(
-            '//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]'
+            '(//p[@class="title"])[1]'
           )
         )
         .getText();

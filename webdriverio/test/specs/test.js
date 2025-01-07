@@ -10,7 +10,7 @@ describe('Test on bstack demo', () => {
     await browser.waitUntil(async () => (await browser.getTitle()).match(/StackDemo/i), 10000);
 
     // click on the apple products
-    await browser.$('//*[@id="__next"]/div/div/main/div[1]/div[1]/label/span').click();
+    await browser.$('//span[normalize-space()="Apple"]').click();
 
     // [percy note: important step]
     // Percy Screenshot 1
@@ -18,18 +18,18 @@ describe('Test on bstack demo', () => {
     await percyScreenshot(browser, 'screenshot_1');
 
     // locating product on the webpage and getting the name of the product
-    await browser.waitUntil(async () => (await browser.$('//*[@id="1"]/p')).isDisplayed());
-    const productText = await browser.$('//*[@id="1"]/p').getText();
+    await browser.waitUntil(async () => (await browser.$('(//p[@class="shelf-item__title"])[3]')).isDisplayed());
+    const productText = await browser.$('(//p[@class="shelf-item__title"])[3]').getText();
 
     // clicking the 'Add to cart' button
-    await browser.$('//*[@id="1"]/div[4]').click();
+    await browser.$('(//div[@class="shelf-item__buy-btn"])[3]').click();
 
     // waiting until the Cart pane has been displayed on the webpage
     await browser.waitUntil(async () => (await browser.$('.float-cart__content')).isDisplayed());
     await browser.$('.float-cart__content');
 
     // locating product in cart and getting the name of the product in the cart
-    const productCartText = await browser.$('//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]').getText();
+    const productCartText = await browser.$('(//p[@class="title"])[1]').getText();
 
     // [percy note: important step]
     // Percy Screenshot 2
