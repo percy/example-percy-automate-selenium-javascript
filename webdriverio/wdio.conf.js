@@ -173,7 +173,8 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+    // Increased timeout to accommodate remote BrowserStack sessions and Percy snapshots
+    timeout: 10000000
     },
     //
     // =====
