@@ -1,17 +1,18 @@
 {
   "private": true,
   "devDependencies": {
-    "@types/jest": "^27.4.0",
-    "jest": "^27.4.7"
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0"
   },
   "dependencies": {
     "@percy/cli": "^1.31.2",
     "@percy/selenium-webdriver": "^2.2.3",
-    "dotenv": "^16.0.0",
-    "selenium-webdriver": "4.1.2"
+    "dotenv": "^17.2.3",
+    "selenium-webdriver": "^4.36.0"
   },
   "scripts": {
     "test": "npx jest tests/test.js",
     "after_test": "npx jest tests/after_test.js"
   }
 }
+

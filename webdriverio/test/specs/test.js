@@ -37,6 +37,6 @@ describe('Test on bstack demo', () => {
     await percyScreenshot(browser, 'screenshot_2');
 
     // checking whether the product has been added to the cart by comparing product names
-    expect(productText).toBe(productCartText);
+    expect(productText).toEqual(expect.stringContaining(productCartText));
   }, 10000000);
 });

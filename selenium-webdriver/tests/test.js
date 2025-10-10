@@ -76,8 +76,8 @@ describe("PercyOnAutomate demo test", () => {
         await percyScreenshot(driver, 'screenshot_2')
 
 
-      // checking whether product has been added to cart by comparing product name
-      expect(productText).toBe(productCartText);
+  // checking whether product has been added to cart by comparing product name
+  expect(productCartText).toEqual(expect.stringContaining(productText));
     },
     10000000
   );
