@@ -56,8 +56,8 @@ describe("PercyOnAutomate demo test", () => {
       let productText = await driver
         .findElement(By.xpath('//*[@id="1"]/p'))
         .getText();
-  // clicking the 'Add to cart' button (matches the product index used above)
-  await driver.findElement(By.xpath('//*[@id="1"]/div[4]')).click();
+      // clicking the 'Add to cart' button
+      await driver.findElement(By.xpath('//*[@id="3"]/div[4]')).click();
       // waiting until the Cart pane has been displayed on the webpage
       await driver.wait(until.elementLocated(By.className("float-cart__content")));
       await driver.findElement(By.className("float-cart__content"));

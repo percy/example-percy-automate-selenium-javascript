@@ -20,6 +20,8 @@ Clone the example application and install dependencies:
 Minimum required `@percy/cli` and `@percy/webdriver-utils` version is `1.27.4` for this to work correctly. If you already have `@percy/cli` or `@percy/webdriver-utils` installed please
 update it to latest or minium required version.
 
+Note: This example was updated to use `@percy/cli` ^1.31.2 and `@percy/selenium-webdriver` ^2.2.3.
+
 ```bash
 $ git clone https://github.com/percy/example-percy-automate-selenium-javascript.git
 $ cd example-percy-automate-selenium-javascript
