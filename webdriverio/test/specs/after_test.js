@@ -30,10 +30,10 @@ describe('Test on bstack demo', () => {
     // locating product in cart and getting the name of the product in the cart
     const productCartText = await browser.$('//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]').getText();
 
-    // [percy note: important step]
-    // Percy Screenshot 2
-    // take percy_screenshot using the following command
-    await percyScreenshot(driver, 'screenshot_2');
+  // [percy note: important step]
+  // Percy Screenshot 2
+  // take percy_screenshot using the following command
+  await percyScreenshot(driver, 'screenshot_2');
 
     // checking whether the product has been added to the cart by comparing product names
     expect(productText).toBe(productCartText);

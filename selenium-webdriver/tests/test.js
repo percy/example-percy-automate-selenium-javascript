@@ -57,7 +57,7 @@ describe("PercyOnAutomate demo test", () => {
         .findElement(By.xpath('//*[@id="1"]/p'))
         .getText();
       // clicking the 'Add to cart' button
-      await driver.findElement(By.xpath('//*[@id="3"]/div[4]')).click();
+      await driver.findElement(By.xpath('//*[@id="1"]/div[4]')).click();
       // waiting until the Cart pane has been displayed on the webpage
       await driver.wait(until.elementLocated(By.className("float-cart__content")));
       await driver.findElement(By.className("float-cart__content"));
@@ -76,8 +76,8 @@ describe("PercyOnAutomate demo test", () => {
         await percyScreenshot(driver, 'screenshot_2')
 
 
-      // checking whether product has been added to cart by comparing product name
-      expect(productText).toBe(productCartText);
+  // checking whether product has been added to cart by comparing product name
+  expect(productText).toBe(productCartText);
     },
     10000000
   );
