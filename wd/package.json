@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@percy/cli": "^1.27.4",
-    "@percy/selenium-webdriver": "^2.0.2",
+    "@percy/selenium-webdriver": "^2.2.4-beta.2",
     "dotenv": "^16.0.0",
     "selenium-webdriver": "4.1.2"
   },
