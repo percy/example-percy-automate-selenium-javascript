@@ -1,0 +1,7 @@
+# PER-8195 — global config for Percy on Automate (selenium-webdriver
+# driver). Per-screenshot options in tests/advanced.test.js override these.
+
+version: 2
+
+percy:
+  defer_uploads: false
