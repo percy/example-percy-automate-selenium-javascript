@@ -15,6 +15,9 @@ on:
           - selenium-webdriver
           - webdriverio
 
+permissions:
+  contents: read
+
 jobs:
   advanced:
     runs-on: ubuntu-latest
