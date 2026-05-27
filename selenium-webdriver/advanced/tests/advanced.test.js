@@ -5,7 +5,7 @@
 // Runs against the BrowserStack Automate hub. Requires
 // BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY, PERCY_TOKEN env vars.
 
-const { Builder, By } = require('selenium-webdriver')
+const { Builder } = require('selenium-webdriver')
 const { percyScreenshot } = require('@percy/selenium-webdriver')
 
 jest.setTimeout(600000)
@@ -19,8 +19,8 @@ describe('Percy on Automate — Advanced', () => {
         os: 'Windows',
         osVersion: '11',
         browserVersion: 'latest',
-        projectName: process.env.PERCY_PROJECT || 'Percy Automate Selenium-JS Advanced',
-        buildName: process.env.PERCY_BUILD || 'Advanced Selenium JS',
+        projectName: process.env.BROWSERSTACK_PROJECT_NAME || 'Percy Automate Selenium-JS Advanced',
+        buildName: process.env.BROWSERSTACK_BUILD_NAME || 'Advanced Selenium JS',
         sessionName: 'advanced_visual_test',
         userName: process.env.BROWSERSTACK_USERNAME,
         accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
@@ -86,7 +86,13 @@ describe('Percy on Automate — Advanced', () => {
   })
 
   test('exercises sync mode', async () => {
-    await percyScreenshot(driver, 'BStackDemo — sync', { sync: true })
+    // sync: true blocks until Percy finishes processing the snapshot and
+    // returns the comparison result (status, comparison URLs, diff data) so
+    // it can be consumed inline — this is what distinguishes it from a normal
+    // fire-and-forget percyScreenshot call.
+    const result = await percyScreenshot(driver, 'BStackDemo — sync', { sync: true })
+    console.log('Percy sync result:', JSON.stringify(result))
+    expect(result).toBeDefined()
   })
 
   test('exercises test_case + labels metadata', async () => {

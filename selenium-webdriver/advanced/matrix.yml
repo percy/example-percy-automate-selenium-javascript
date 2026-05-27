@@ -47,7 +47,7 @@ rows:
 
   - id: build_metadata_via_env
     state: covered
-    test: 'capabilities driven by PERCY_PROJECT / PERCY_BUILD env'
+    test: 'capabilities driven by BROWSERSTACK_PROJECT_NAME / BROWSERSTACK_BUILD_NAME env'
   - id: env_percy_branch
     state: covered
   - id: env_percy_commit
