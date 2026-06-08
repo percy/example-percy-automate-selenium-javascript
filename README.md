@@ -2,7 +2,7 @@
 
 Example app used by the Percy JS Selenium tutorial and Percy JS WebdriverIO tutorial demonstrating Percy on Auomate JS Selenium and WebdriverIO integrations.
 
-> **New:** This repo ships an [`advanced/`](./selenium-webdriver/advanced) example covering the full applicable Percy on Automate feature surface for the `selenium-webdriver` driver. See the [Percy SDK Feature Matrix](https://docs.percy.io/docs/sdk-feature-matrix) for cross-SDK coverage. A `webdriverio/advanced/` symmetric example is planned.
+> **New:** This repo ships an [`advanced/`](./selenium-webdriver/advanced) example covering the full applicable Percy on Automate feature surface for the `selenium-webdriver` driver. See [`selenium-webdriver/advanced/matrix.yml`](./selenium-webdriver/advanced/matrix.yml) for the per-feature coverage matrix. A `webdriverio/advanced/` symmetric example is planned.
 
 ## Examples
 
