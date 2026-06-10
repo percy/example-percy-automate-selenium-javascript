@@ -1,0 +1,63 @@
+name: Advanced — Percy on Automate
+
+# PER-8195 Phase 3 — advanced example for @percy/selenium-webdriver (Automate mode).
+# Triggers manually only (`workflow_dispatch`). Percy on Automate CI requires a
+# real BrowserStack Automate session.
+on:
+  workflow_dispatch:
+    inputs:
+      driver:
+        description: 'Which driver to run'
+        required: true
+        default: 'selenium-webdriver'
+        type: choice
+        options:
+          - selenium-webdriver
+          - webdriverio
+
+permissions:
+  contents: read
+
+jobs:
+  advanced:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ${{ inputs.driver }}/advanced
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify driver directory exists
+        working-directory: .
+        run: |
+          if [ ! -d "${{ inputs.driver }}/advanced" ]; then
+            echo "::error::${{ inputs.driver }}/advanced does not exist yet — only 'selenium-webdriver' is implemented in this phase."
+            exit 1
+          fi
+      - name: Sanity-check required secrets
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: |
+          missing=()
+          [ -z "$BROWSERSTACK_USERNAME" ] && missing+=(BROWSERSTACK_USERNAME)
+          [ -z "$BROWSERSTACK_ACCESS_KEY" ] && missing+=(BROWSERSTACK_ACCESS_KEY)
+          [ -z "$PERCY_TOKEN" ]            && missing+=(PERCY_TOKEN)
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error::Missing required repo secrets: ${missing[*]}"
+            exit 1
+          fi
+      - name: Install advanced/ dependencies
+        run: npm install
+      - name: Run advanced tests against BrowserStack Automate
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_BRANCH: ${{ github.ref_name }}
+          PERCY_COMMIT: ${{ github.sha }}
+        run: npx --no-install percy exec -- npm run test:advanced

@@ -1,0 +1,95 @@
+# PER-8195 Phase 3 — Automate Selenium-JS matrix-row mapping.
+# Test code: tests/advanced.test.js (jest).
+#
+# Percy on Automate posts to /percy/automateScreenshot (BrowserStack-side
+# capture), not /percy/snapshot (DOM serialization). Some rows from the
+# regular web matrix don't apply.
+
+sdk: automate-selenium-javascript
+driver: selenium-webdriver
+package: '@percy/selenium-webdriver'
+language: javascript
+mode: automate
+sdk_min_version: '2.2.6'
+cli_min_version: '1.31.13'
+
+rows:
+  - id: ignore_region_xpaths
+    state: covered
+    test: 'exercises ignore_region_xpaths'
+  - id: ignore_region_selectors
+    state: covered
+    test: 'exercises ignore_region_selectors (CSS)'
+  - id: custom_ignore_regions
+    state: covered
+    test: 'exercises custom_ignore_regions'
+  - id: consider_region_xpaths
+    state: covered
+    test: 'exercises consider_region_xpaths'
+  - id: consider_region_selectors
+    state: covered
+    test: 'exercises consider_region_selectors (CSS)'
+  - id: freeze_animation
+    state: covered
+    test: 'exercises freeze_animation'
+  - id: percy_css
+    state: covered
+    test: 'exercises percy_css'
+  - id: sync
+    state: covered
+    test: 'exercises sync mode'
+  - id: test_case
+    state: covered
+    test: 'exercises test_case + labels metadata'
+  - id: labels
+    state: covered
+    test: 'exercises test_case + labels metadata'
+
+  - id: build_metadata_via_env
+    state: covered
+    test: 'capabilities driven by BROWSERSTACK_PROJECT_NAME / BROWSERSTACK_BUILD_NAME env'
+  - id: env_percy_branch
+    state: covered
+  - id: env_percy_commit
+    state: covered
+
+  # Not exposed in Percy on Automate flow (server-side capture).
+  - id: widths
+    state: n_a
+    reason: 'Percy on Automate captures from a browser already at the configured viewport; widths is set via driver.window().setRect.'
+  - id: min_height
+    state: n_a
+    reason: 'Server-side capture; min-height not applicable to /percy/automateScreenshot body.'
+  - id: enable_javascript
+    state: n_a
+    reason: 'JS already executes in the live browser session.'
+  - id: scope
+    state: n_a
+    reason: 'Not in /percy/automateScreenshot body.'
+  - id: discovery
+    state: n_a
+    reason: 'No asset discovery in Automate mode.'
+  - id: dom_transformation
+    state: n_a
+    reason: 'No DOM serialization in Automate mode.'
+  - id: responsive_snapshot_capture
+    state: n_a
+    reason: 'Server-side capture from a single viewport per session.'
+  - id: readiness_preset
+    state: n_a
+    reason: 'Readiness presets are for in-process DOM SDKs, not Automate.'
+  - id: device_pixel_ratio
+    state: n_a
+    reason: 'DPR fixed by the BrowserStack VM.'
+  - id: browsers
+    state: n_a
+    reason: 'Browser is the live driver browser; multi-browser comparison is parallel sessions.'
+  - id: regions
+    state: n_a
+    reason: 'Use ignore_region_xpaths / ignore_region_selectors / custom_ignore_regions instead.'
+
+  - id: percy_yml_global_config
+    state: covered
+  - id: environment_info_reporting
+    state: covered
+    test: 'automatic via @percy/selenium-webdriver client info'

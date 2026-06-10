@@ -1,0 +1,16 @@
+{
+  "name": "example-percy-automate-selenium-js-advanced",
+  "private": true,
+  "description": "Advanced Percy on Automate + Selenium-WebDriver example. Exercises the full applicable Percy on Automate SDK feature surface against the BrowserStack hub.",
+  "scripts": {
+    "test:advanced": "npx jest tests/advanced.test.js"
+  },
+  "dependencies": {
+    "@percy/cli": "^1.31.13",
+    "@percy/selenium-webdriver": "^2.2.6",
+    "selenium-webdriver": "^4.36.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
